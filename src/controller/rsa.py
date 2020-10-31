@@ -3,12 +3,12 @@ import random
 from util import plaintext_to_block, block_to_plaintext
 
 class RSA:
-    def __init__(self, key_size=10):
+    def __init__(self, key_size=50):
         self.key_size = key_size
         self.e = None
         self.d = None
         self.n = None
-        self.generate_key()
+        # self.generate_key()
 
     def gcd(self, a, b):
         while a != 0:
@@ -40,12 +40,12 @@ class RSA:
         print("panjang e :", len(str(self.e)))
         print("panjang d :", len(str(self.d)))
 
-    def save_key(self, path):
-        pub = open(path+ "rsa.pub", "w")
-        pub.write(str(self.e) + " " + str(self.n))
+    def save_key(self, path, e, n, d):
+        pub = open(path+ ".pub", "w")
+        pub.write(str(e) + " " + str(n))
         pub.close()
-        pri = open(path + "rsa.pri", "w")
-        pri.write(str(self.d) + " " + str(self.n))
+        pri = open(path + ".pri", "w")
+        pri.write(str(d) + " " + str(n))
         pri.close()
 
     def load_public_key(self, path):
@@ -69,11 +69,10 @@ class RSA:
     def encrypt(self, plaintext, e, n):
         # TODO : load ke block
         pt = plaintext_to_block(plaintext, len(str(n)) - 1)
-        print("pt : ", pt)
         res = []
         for block in pt:
-            res.append(pow(block, e, n))
-        print(res)
+            res.append(str(pow(block, e, n)))
+        print("Hasil dari enkripsi :", res)
         return res
     
     def decrypt(self, ciphertext_block, d, n):
@@ -81,8 +80,9 @@ class RSA:
         res = []
         for block in ciphertext_block:
             res.append(pow(block, d, n))
+        print("hasil dari dekripsi :", res)
         ct = block_to_plaintext(res, len(str(n))-1 )
-        print(ct)
+        return (ct)
 
 if __name__ == "__main__":
     rsa = RSA()
