@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>869</width>
-    <height>641</height>
+    <width>1100</width>
+    <height>750</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,8 +19,8 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>871</width>
-      <height>641</height>
+      <width>1101</width>
+      <height>751</height>
      </rect>
     </property>
     <widget class="QWidget" name="mainMenuPage">
@@ -121,8 +121,8 @@
      <widget class="QLabel" name="rsaTitle">
       <property name="geometry">
        <rect>
-        <x>230</x>
-        <y>60</y>
+        <x>350</x>
+        <y>30</y>
         <width>411</width>
         <height>41</height>
        </rect>
@@ -143,13 +143,392 @@
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
-    </widget>
-    <widget class="QWidget" name="elgamalPage">
-     <widget class="QLabel" name="elgamalTitle">
+     <widget class="QPushButton" name="button_d_load_file">
       <property name="geometry">
        <rect>
-        <x>230</x>
-        <y>60</y>
+        <x>940</x>
+        <y>300</y>
+        <width>91</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>load file</string>
+      </property>
+     </widget>
+     <widget class="QPlainTextEdit" name="d_ciphertext">
+      <property name="geometry">
+       <rect>
+        <x>600</x>
+        <y>350</y>
+        <width>441</width>
+        <height>131</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="button_generate_key">
+      <property name="geometry">
+       <rect>
+        <x>400</x>
+        <y>230</y>
+        <width>121</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>generate kunci</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="d_key">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>200</y>
+        <width>851</width>
+        <height>20</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="d_file_name">
+      <property name="geometry">
+       <rect>
+        <x>730</x>
+        <y>300</y>
+        <width>191</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>130</y>
+        <width>91</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Kunci Publik:</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_8">
+      <property name="geometry">
+       <rect>
+        <x>750</x>
+        <y>260</y>
+        <width>111</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>DEKRIPSI PESAN</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_9">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>330</y>
+        <width>71</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Plaintext :</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_7">
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>260</y>
+        <width>111</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>ENKRIPSI PESAN</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="e_file_name">
+      <property name="geometry">
+       <rect>
+        <x>200</x>
+        <y>300</y>
+        <width>191</width>
+        <height>20</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_13">
+      <property name="geometry">
+       <rect>
+        <x>600</x>
+        <y>300</y>
+        <width>121</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Ciphertext dari file:</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_2">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>180</y>
+        <width>91</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Kunci Private:</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_11">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>490</y>
+        <width>71</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Ciphertext:</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_4">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>150</y>
+        <width>21</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>e :</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_10">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>300</y>
+        <width>111</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Plaintext dari file:</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="button_e_load_file">
+      <property name="geometry">
+       <rect>
+        <x>410</x>
+        <y>300</y>
+        <width>91</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>load file</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="button_save_key">
+      <property name="geometry">
+       <rect>
+        <x>540</x>
+        <y>230</y>
+        <width>111</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>simpan kunci</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_12">
+      <property name="geometry">
+       <rect>
+        <x>600</x>
+        <y>330</y>
+        <width>81</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Ciphertext :</string>
+      </property>
+     </widget>
+     <widget class="QPlainTextEdit" name="d_plaintext">
+      <property name="geometry">
+       <rect>
+        <x>600</x>
+        <y>510</y>
+        <width>441</width>
+        <height>131</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="button_dekripsi">
+      <property name="geometry">
+       <rect>
+        <x>770</x>
+        <y>650</y>
+        <width>91</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Dekripsi</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="button_enkripsi">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>650</y>
+        <width>91</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Enkripsi</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_14">
+      <property name="geometry">
+       <rect>
+        <x>600</x>
+        <y>490</y>
+        <width>71</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Plaintext :</string>
+      </property>
+     </widget>
+     <widget class="Line" name="line">
+      <property name="geometry">
+       <rect>
+        <x>540</x>
+        <y>270</y>
+        <width>16</width>
+        <height>431</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="e_key">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>150</y>
+        <width>851</width>
+        <height>20</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="button_load_pri_key">
+      <property name="geometry">
+       <rect>
+        <x>960</x>
+        <y>200</y>
+        <width>91</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>load key</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_3">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>100</y>
+        <width>91</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Kunci n :</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="button_load_pub_key">
+      <property name="geometry">
+       <rect>
+        <x>960</x>
+        <y>150</y>
+        <width>91</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>load key</string>
+      </property>
+     </widget>
+     <widget class="QPlainTextEdit" name="e_plaintext">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>350</y>
+        <width>441</width>
+        <height>131</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="n_key">
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>100</y>
+        <width>931</width>
+        <height>20</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_5">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>200</y>
+        <width>21</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>d :</string>
+      </property>
+     </widget>
+     <widget class="QPlainTextEdit" name="e_ciphertext">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>510</y>
+        <width>441</width>
+        <height>131</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="elgamalPage">
+     <widget class="QLabel" name="egTitle">
+      <property name="geometry">
+       <rect>
+        <x>350</x>
+        <y>20</y>
         <width>411</width>
         <height>41</height>
        </rect>
@@ -168,6 +547,560 @@
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QGroupBox" name="egInpKeyGroup">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>70</y>
+        <width>1021</width>
+        <height>231</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Input Key</string>
+      </property>
+      <widget class="QGroupBox" name="egPubKeyGroup">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>20</y>
+         <width>481</width>
+         <height>161</height>
+        </rect>
+       </property>
+       <property name="title">
+        <string>Public Key</string>
+       </property>
+       <widget class="QWidget" name="formLayoutWidget">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>60</y>
+          <width>461</width>
+          <height>91</height>
+         </rect>
+        </property>
+        <layout class="QFormLayout" name="egPubKeyFL">
+         <item row="0" column="0">
+          <widget class="QLabel" name="egPubYLbl">
+           <property name="text">
+            <string>y</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="egPubGLbl">
+           <property name="text">
+            <string>g</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="egPubPLbl">
+           <property name="text">
+            <string>p</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QLineEdit" name="egPubYInp"/>
+         </item>
+         <item row="1" column="1">
+          <widget class="QLineEdit" name="egPubGInp"/>
+         </item>
+         <item row="2" column="1">
+          <widget class="QLineEdit" name="egPubPInp"/>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QPushButton" name="egPubLoadBtn">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>20</y>
+          <width>461</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Load Public Key</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QGroupBox" name="egPriKeyGroup">
+       <property name="geometry">
+        <rect>
+         <x>520</x>
+         <y>20</y>
+         <width>481</width>
+         <height>161</height>
+        </rect>
+       </property>
+       <property name="title">
+        <string>Private Key</string>
+       </property>
+       <widget class="QWidget" name="formLayoutWidget_2">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>60</y>
+          <width>461</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <layout class="QFormLayout" name="egPriKeyFL">
+         <item row="1" column="0">
+          <widget class="QLabel" name="egPriPLbl">
+           <property name="text">
+            <string>p</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="QLabel" name="egPriXLbl">
+           <property name="text">
+            <string>x</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QLineEdit" name="egPriXInp"/>
+         </item>
+         <item row="1" column="1">
+          <widget class="QLineEdit" name="egPriPInp"/>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QPushButton" name="egPriLoadBtn">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>20</y>
+          <width>461</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Load Private Key</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QPushButton" name="egGenKeyBtn">
+       <property name="geometry">
+        <rect>
+         <x>382</x>
+         <y>190</y>
+         <width>121</width>
+         <height>28</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Generate Key</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="egSaveKeyBtn">
+       <property name="geometry">
+        <rect>
+         <x>520</x>
+         <y>190</y>
+         <width>121</width>
+         <height>28</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Save Key</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="egEncGroup">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>310</y>
+        <width>491</width>
+        <height>401</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Encryption</string>
+      </property>
+      <widget class="QPlainTextEdit" name="egEncPtInp">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>80</y>
+         <width>441</width>
+         <height>121</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QPlainTextEdit" name="egEncCtAOut">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>220</y>
+         <width>211</width>
+         <height>131</height>
+        </rect>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLabel" name="egEncCtALbl">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>200</y>
+         <width>211</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>Ciphertext (a)</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+      <widget class="QLabel" name="egEncPtLbl">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>60</y>
+         <width>441</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>Plaintext</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="egEncryptBtn">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>360</y>
+         <width>211</width>
+         <height>28</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Encrypt</string>
+       </property>
+      </widget>
+      <widget class="QWidget" name="layoutWidget">
+       <property name="geometry">
+        <rect>
+         <x>22</x>
+         <y>30</y>
+         <width>441</width>
+         <height>26</height>
+        </rect>
+       </property>
+       <layout class="QGridLayout" name="egEncFileInpGL">
+        <item row="0" column="2">
+         <widget class="QToolButton" name="egEncFileInpPathBtn">
+          <property name="text">
+           <string>...</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QLineEdit" name="egEncFileInpPathInp">
+          <property name="enabled">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QLabel" name="egEncFileInpPathLbl">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string>File Input</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QPushButton" name="egSaveCtBtn">
+       <property name="geometry">
+        <rect>
+         <x>250</x>
+         <y>360</y>
+         <width>211</width>
+         <height>28</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Save Ciphertext</string>
+       </property>
+      </widget>
+      <widget class="QPlainTextEdit" name="egEncCtBOut">
+       <property name="geometry">
+        <rect>
+         <x>250</x>
+         <y>220</y>
+         <width>211</width>
+         <height>131</height>
+        </rect>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLabel" name="egEncCtBLbl">
+       <property name="geometry">
+        <rect>
+         <x>250</x>
+         <y>200</y>
+         <width>211</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>Ciphertext (b)</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="egDecGroup">
+      <property name="geometry">
+       <rect>
+        <x>570</x>
+        <y>310</y>
+        <width>491</width>
+        <height>401</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Decryption</string>
+      </property>
+      <widget class="QPlainTextEdit" name="egDecCtAInp">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>80</y>
+         <width>211</width>
+         <height>121</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QPlainTextEdit" name="egDecPtOut">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>220</y>
+         <width>441</width>
+         <height>131</height>
+        </rect>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLabel" name="egDecPtLbl">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>200</y>
+         <width>441</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>Plaintext</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+      <widget class="QLabel" name="egDecCtALbl">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>60</y>
+         <width>211</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>Ciphertext (a)</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="egDecryptBtn">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>360</y>
+         <width>211</width>
+         <height>28</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Decrypt</string>
+       </property>
+      </widget>
+      <widget class="QWidget" name="layoutWidget_2">
+       <property name="geometry">
+        <rect>
+         <x>22</x>
+         <y>30</y>
+         <width>441</width>
+         <height>26</height>
+        </rect>
+       </property>
+       <layout class="QGridLayout" name="egDecFileInpGL">
+        <item row="0" column="2">
+         <widget class="QToolButton" name="egDecFileInpPathBtn">
+          <property name="text">
+           <string>...</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QLineEdit" name="egDecFileInpPathInp">
+          <property name="enabled">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QLabel" name="egDecFileInpPathLbl">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string>File Input</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QPushButton" name="egSavePtBtn">
+       <property name="geometry">
+        <rect>
+         <x>250</x>
+         <y>360</y>
+         <width>211</width>
+         <height>28</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Save Plaintext</string>
+       </property>
+      </widget>
+      <widget class="QPlainTextEdit" name="egDecCtBInp">
+       <property name="geometry">
+        <rect>
+         <x>250</x>
+         <y>80</y>
+         <width>211</width>
+         <height>121</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="egDecCtBLbl">
+       <property name="geometry">
+        <rect>
+         <x>250</x>
+         <y>60</y>
+         <width>211</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>Ciphertext (b)</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </widget>
+     <widget class="Line" name="egVerLine">
+      <property name="geometry">
+       <rect>
+        <x>540</x>
+        <y>320</y>
+        <width>20</width>
+        <height>391</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="egBackBtn">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>20</y>
+        <width>71</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;&lt; Back</string>
       </property>
      </widget>
     </widget>
