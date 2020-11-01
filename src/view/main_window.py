@@ -6,6 +6,8 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
 from controller import *
+from .rsa_ui import RSAUI
+from .elgamal_ui import ElGamalUI
 
 
 class PageIdx(IntEnum):
@@ -15,9 +17,14 @@ class PageIdx(IntEnum):
     DH_PAGE = 3
 
 
-class MainWindow(QMainWindow):
+class MainWindow(QMainWindow, RSAUI, ElGamalUI):
     def __init__(self):
-        super(MainWindow, self).__init__()
+        # call parents constructor
+        # super(MainWindow, self).__init__()
+        QMainWindow.__init__(self)
+        RSAUI.__init__(self)
+        ElGamalUI.__init__(self)
+        # load ui
         loadUi(os.path.join(os.getcwd(), "view", "main_window.ui"), self)
         # change page helper
         self.changePage = lambda idx: self.stackedWidget.setCurrentIndex(idx)
@@ -35,20 +42,8 @@ class MainWindow(QMainWindow):
         self.elgamalPageBtn.clicked.connect(lambda: self.changePage(PageIdx.ELGAMAL_PAGE))
         self.dhPageBtn.clicked.connect(lambda: self.changePage(PageIdx.DH_PAGE))
         self.exitBtn.clicked.connect(lambda: self.close())
-
-    # Helper methods
-    def spawnDialogWindow(self, title, text, subtext="" , type="Information"):
-        message = QMessageBox()
-        if type == "Question":
-            message.setIcon(QMessageBox.Question)
-        elif type == "Warning":
-            message.setIcon(QMessageBox.Warning)
-        elif type == "Critical":
-            message.setIcon(QMessageBox.Critical)
-        else:
-            message.setIcon(QMessageBox.Information)
-        message.setWindowTitle(title)
-        message.setText(text)
-        message.setInformativeText(subtext)
-        message.setStandardButtons(QMessageBox.Ok)
-        message._exec()
+        # rsa page
+        self.setupUIRSA()
+        # elgamal page
+        self.setupUIElGamal()
+        self.egBackBtn.clicked.connect(lambda: self.changePage(PageIdx.MAIN_MENU))
