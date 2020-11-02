@@ -127,4 +127,4 @@ class RSAUI:
                 f = open(fname[0] + ".txt", "wb")
                 f.write(pt)
         except:
-            self.warning_msg("Decrypt Failde!", "n and d key must match.")
+            self.warning_msg("Decrypt Failed!", "n and d key must match.")
