@@ -133,7 +133,7 @@ class RSAUI:
             print("hasil ct" , ct)
             pt = self.rsa.decrypt(ct, int(self.d_key.text()), int(self.n_key.text()))
             print("hasil pt = ", pt)
-            self.d_plaintext.setPlainText(pt.decode('utf-8', 'ignore').rstrip('\x00'))
+            self.d_plaintext.setPlainText(pt.decode("utf-8", 'ignore'))
         else:
             f = open(self.ct_path, "r")
             load = f.read().split(" ")
@@ -142,13 +142,13 @@ class RSAUI:
             pt = self.rsa.decrypt(ct, int(self.d_key.text()), int(self.n_key.text()))
             fname = QFileDialog.getSaveFileName(self, 'Save File')
             f = open(fname[0], "wb")
-            f.write(pt.decode('latin-1').rstrip('\x00').encode('latin-1'))
+            f.write(pt)
             f.close()
         # except:
         #     self.warning_msg("Decrypt Failed!", "n and d key must match.")
         e = time.time()
         t = str(round(e-s, 10))
         ct_size = str(len(load))
-        pt_size = str(len(pt.decode('latin-1').rstrip('\x00')))
+        pt_size = str(len(pt))
         msg = "Time : " + t + " seconds\n" + "Ciphertext : " + ct_size + " bytes\n" + "Plaintext : " + pt_size + " bytes\n"
         self.info_msg("Decrypt Success!", msg)
