@@ -3,7 +3,7 @@ import random
 from util import plaintext_to_block, block_to_plaintext
 
 class RSA:
-    def __init__(self, key_size=50):
+    def __init__(self, key_size=180):
         self.key_size = key_size
         self.e = None
         self.d = None
