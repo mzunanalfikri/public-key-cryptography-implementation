@@ -57,7 +57,7 @@ class RSAUI:
         msg.exec_()
 
     def load_pt(self):
-        fname = QFileDialog().getOpenFileName(None, "Load Plaintext", "", "Allfiles (*.txt)")
+        fname = QFileDialog().getOpenFileName(None, "Load Plaintext", "", "Allfiles (*.*)")
         self.pt_path = (fname[0])
         self.refresh()
 
@@ -133,7 +133,7 @@ class RSAUI:
             print("hasil ct" , ct)
             pt = self.rsa.decrypt(ct, int(self.d_key.text()), int(self.n_key.text()))
             print("hasil pt = ", pt)
-            self.d_plaintext.setPlainText(pt.decode('utf-8', 'ignore'))
+            self.d_plaintext.setPlainText(pt.decode('utf-8', 'ignore').rstrip('\x00'))
         else:
             f = open(self.ct_path, "r")
             load = f.read().split(" ")
@@ -141,8 +141,9 @@ class RSAUI:
             ct = [int(i) for i in load]
             pt = self.rsa.decrypt(ct, int(self.d_key.text()), int(self.n_key.text()))
             fname = QFileDialog.getSaveFileName(self, 'Save File')
-            f = open(fname[0] + ".txt", "wb")
-            f.write(pt)
+            f = open(fname[0], "wb")
+            f.write(pt.decode('latin-1').rstrip('\x00').encode('latin-1'))
+            f.close()
         # except:
         #     self.warning_msg("Decrypt Failed!", "n and d key must match.")
         e = time.time()
