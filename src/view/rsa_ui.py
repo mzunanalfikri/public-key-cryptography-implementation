@@ -109,19 +109,22 @@ class RSAUI:
         if (not((self.d_ciphertext.toPlainText() == "") ^ (self.ct_path == ''))):
             self.warning_msg("Wrong Ciphertext!", "Ciphertext mus be loaded from file or writen in textbox")
 
-        if (self.d_ciphertext.toPlainText() != ''):
-            load = self.d_ciphertext.toPlainText().split(" ")
-            ct = [int(i) for i in load]
-            print("hasil ct" , ct)
-            pt = self.rsa.decrypt(ct, int(self.d_key.text()), int(self.n_key.text()))
-            print("hasil pt = ", pt)
-            self.d_plaintext.setPlainText(pt.decode())
-        else:
-            f = open(self.ct_path, "r")
-            temp = f.read().split(" ")
-            f.close()
-            ct = [int(i) for i in temp]
-            pt = self.rsa.decrypt(ct, int(self.d_key.text()), int(self.n_key.text()))
-            fname = QFileDialog.getSaveFileName(self, 'Save File')
-            f = open(fname[0] + ".txt", "wb")
-            f.write(pt)
+        try:
+            if (self.d_ciphertext.toPlainText() != ''):
+                load = self.d_ciphertext.toPlainText().split(" ")
+                ct = [int(i) for i in load]
+                print("hasil ct" , ct)
+                pt = self.rsa.decrypt(ct, int(self.d_key.text()), int(self.n_key.text()))
+                print("hasil pt = ", pt)
+                self.d_plaintext.setPlainText(pt.decode())
+            else:
+                f = open(self.ct_path, "r")
+                temp = f.read().split(" ")
+                f.close()
+                ct = [int(i) for i in temp]
+                pt = self.rsa.decrypt(ct, int(self.d_key.text()), int(self.n_key.text()))
+                fname = QFileDialog.getSaveFileName(self, 'Save File')
+                f = open(fname[0] + ".txt", "wb")
+                f.write(pt)
+        except:
+            self.warning_msg("Decrypt Failde!", "n and d key must match.")
