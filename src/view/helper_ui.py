@@ -1,3 +1,6 @@
+from PyQt5.QtWidgets import QMessageBox
+
+
 def spawnDialogWindow(title, text, subtext="" , type="Information"):
     message = QMessageBox()
     if type == "Question":
@@ -12,4 +15,4 @@ def spawnDialogWindow(title, text, subtext="" , type="Information"):
     message.setText(text)
     message.setInformativeText(subtext)
     message.setStandardButtons(QMessageBox.Ok)
-    message._exec()
+    message.exec_()
