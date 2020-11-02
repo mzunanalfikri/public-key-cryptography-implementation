@@ -23,6 +23,9 @@
       <height>751</height>
      </rect>
     </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
     <widget class="QWidget" name="mainMenuPage">
      <widget class="QLabel" name="mainTitle">
       <property name="geometry">
@@ -1095,8 +1098,8 @@
      <widget class="QLabel" name="dhTitle">
       <property name="geometry">
        <rect>
-        <x>230</x>
-        <y>60</y>
+        <x>350</x>
+        <y>40</y>
         <width>411</width>
         <height>41</height>
        </rect>
@@ -1112,6 +1115,38 @@
       </property>
       <property name="textFormat">
        <enum>Qt::AutoText</enum>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QTextBrowser" name="simulation_result">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>380</y>
+        <width>591</width>
+        <height>192</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="egEncPtLbl_2">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>350</y>
+        <width>111</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="text">
+       <string>Hasil simulasi :</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>

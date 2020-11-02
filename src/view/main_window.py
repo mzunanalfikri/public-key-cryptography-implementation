@@ -8,6 +8,7 @@ from PyQt5.QtWidgets import *
 from controller import *
 from .rsa_ui import RSAUI
 from .elgamal_ui import ElGamalUI
+from .diffie_hellman_ui import DiffieHellmanUI
 
 
 class PageIdx(IntEnum):
@@ -17,13 +18,15 @@ class PageIdx(IntEnum):
     DH_PAGE = 3
 
 
-class MainWindow(QMainWindow, RSAUI, ElGamalUI):
+class MainWindow(QMainWindow, RSAUI, ElGamalUI, DiffieHellmanUI):
     def __init__(self):
         # call parents constructor
         # super(MainWindow, self).__init__()
         QMainWindow.__init__(self)
         RSAUI.__init__(self)
         ElGamalUI.__init__(self)
+        DiffieHellmanUI.__init__(self)
+        
         # load ui
         loadUi(os.path.join(os.getcwd(), "view", "main_window.ui"), self)
         # change page helper
@@ -46,4 +49,6 @@ class MainWindow(QMainWindow, RSAUI, ElGamalUI):
         self.setupUIRSA()
         # elgamal page
         self.setupUIElGamal()
+        # diffie hellman page
+        self.setupUIDiffieHellman()
         self.egBackBtn.clicked.connect(lambda: self.changePage(PageIdx.MAIN_MENU))
