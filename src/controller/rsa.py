@@ -8,7 +8,6 @@ class RSA:
         self.e = None
         self.d = None
         self.n = None
-        # self.generate_key()
 
     def gcd(self, a, b):
         while a != 0:
@@ -39,12 +38,6 @@ class RSA:
                 break
         # self.d = pow(self.e, -1, self.toitent_euler)
         self.d = self.mod_inverse(self.e, self.toitent_euler)
-        print(self.p)
-        print(self.q)
-        print("e : ", self.e)
-        print("d :", self.d)
-        print("panjang e :", len(str(self.e)))
-        print("panjang d :", len(str(self.d)))
 
     def save_key(self, path, e, n, d):
         pub = open(path+ ".pub", "w")
@@ -58,35 +51,27 @@ class RSA:
         f = open(path, "r")
         pub = f.read().split(" ")
         f.close()
-        assert len(pub) == 2
         self.e = int(pub[0])
         self.n = int(pub[1])
-        # print("e : ", self.e, "n :", self.n, type(self.e), type(self.n))
 
     def load_private_key(self, path):
         f = open(path, "r")
         pri = f.read().split(" ")
         f.close()
-        assert len(pri) == 2
         self.d = int(pri[0])
         self.n = int(pri[1])
-        # print("d : ", self.d, "n :", self.n, type(self.d), type(self.n))
 
     def encrypt(self, plaintext, e, n):
-        # TODO : load ke block
         pt = plaintext_to_block(plaintext, len(str(n)) - 1)
         res = []
         for block in pt:
             res.append(str(pow(block, e, n)))
-        print("Hasil dari enkripsi :", res)
         return res
 
     def decrypt(self, ciphertext_block, d, n):
-        # TODO : load ke block
         res = []
         for block in ciphertext_block:
             res.append(pow(block, d, n))
-        print("hasil dari dekripsi :", res)
         ct = block_to_plaintext(res, len(str(n))-1 )
         return (ct)
 
