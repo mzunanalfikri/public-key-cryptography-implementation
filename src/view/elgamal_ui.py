@@ -3,7 +3,7 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
-from controller import ElGamal, ElGamalKey
+from controller import ElGamal, ElGamalKey, ElGamalPublicKey, ElGamalPrivateKey
 from .helper_ui import spawnDialogWindow
 
 
@@ -18,6 +18,8 @@ class ElGamalUI:
         self.egGenKeyBtn.clicked.connect(self.egGenerateKey)
         self.egPubLoadBtn.clicked.connect(self.egLoadPublicKey)
         self.egPriLoadBtn.clicked.connect(self.egLoadPrivateKey)
+        self.egSavePubKeyBtn.clicked.connect(self.egSavePublicKey)
+        self.egSavePriKeyBtn.clicked.connect(self.egSavePrivateKey)
         # encryption
         self.egEncFileInpPathBtn.clicked.connect(self.egSelectPlaintextFile)
         self.egEncryptBtn.clicked.connect(self.egEncrypt)
@@ -52,6 +54,29 @@ class ElGamalUI:
                 print('Error:', e)
             else:
                 self.egUpdatePriKeyUI()
+
+    def egSavePublicKey(self):
+        if not (self.egPubYInp.text() and self.egPubGInp.text() and self.egPubPInp.text()):
+            print('Public key form not all filled')
+            return
+        y = int(self.egPubYInp.text())
+        g = int(self.egPubGInp.text())
+        p = int(self.egPubPInp.text())
+        key = ElGamalKey(ElGamalPublicKey(y, g, p), None)
+        fileName, _ = QFileDialog.getSaveFileName(None, 'Save Public Key', 'key.pub', 'PublicKey Files (*.pub)')
+        if fileName:
+            key.save_public_key(fileName)
+
+    def egSavePrivateKey(self):
+        if not (self.egPriXInp.text() and self.egPriPInp.text()):
+            print('Private key form not all filled')
+            return
+        x = int(self.egPriXInp.text())
+        p = int(self.egPriPInp.text())
+        key = ElGamalKey(None, ElGamalPrivateKey(x, p))
+        fileName, _ = QFileDialog.getSaveFileName(None, 'Save Private Key', 'key.pri', 'PrivateKey Files (*.pri)')
+        if fileName:
+            key.save_private_key(fileName)
 
     def egSelectPlaintextFile(self):
         fileName, _ = QFileDialog.getOpenFileName(None, 'Select Plaintext File', '', 'All Files (*.*)')

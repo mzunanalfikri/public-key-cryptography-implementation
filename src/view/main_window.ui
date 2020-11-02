@@ -690,7 +690,7 @@
       <widget class="QPushButton" name="egGenKeyBtn">
        <property name="geometry">
         <rect>
-         <x>382</x>
+         <x>450</x>
          <y>190</y>
          <width>121</width>
          <height>28</height>
@@ -700,17 +700,30 @@
         <string>Generate Key</string>
        </property>
       </widget>
-      <widget class="QPushButton" name="egSaveKeyBtn">
+      <widget class="QPushButton" name="egSavePubKeyBtn">
        <property name="geometry">
         <rect>
-         <x>520</x>
+         <x>318</x>
          <y>190</y>
          <width>121</width>
          <height>28</height>
         </rect>
        </property>
        <property name="text">
-        <string>Save Key</string>
+        <string>Save Public Key</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="egSavePriKeyBtn">
+       <property name="geometry">
+        <rect>
+         <x>580</x>
+         <y>190</y>
+         <width>121</width>
+         <height>28</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Save Private Key</string>
        </property>
       </widget>
      </widget>
