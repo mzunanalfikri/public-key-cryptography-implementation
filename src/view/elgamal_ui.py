@@ -39,7 +39,7 @@ class ElGamalUI:
             try:
                 self.egKey.load_public_key(fileName)
             except Exception as e:
-                print('Error:', e)
+                spawnDialogWindow('Error Happened', str(e), type='Warning')
             else:
                 self.egUpdatePubKeyUI()
 
@@ -49,13 +49,13 @@ class ElGamalUI:
             try:
                 self.egKey.load_private_key(fileName)
             except Exception as e:
-                print('Error:', e)
+                spawnDialogWindow('Error Happened', str(e), type='Warning')
             else:
                 self.egUpdatePriKeyUI()
 
     def egSavePublicKey(self):
         if not (self.egPubYInp.text() and self.egPubGInp.text() and self.egPubPInp.text()):
-            print('Public key form not all filled')
+            spawnDialogWindow('Failed to Save Public Key', 'Public key form not all filled', type='Warning')
             return
         y = int(self.egPubYInp.text())
         g = int(self.egPubGInp.text())
@@ -63,18 +63,24 @@ class ElGamalUI:
         key = ElGamalKey(ElGamalPublicKey(y, g, p), None)
         fileName, _ = QFileDialog.getSaveFileName(None, 'Save Public Key', 'key.pub', 'PublicKey Files (*.pub)')
         if fileName:
-            key.save_public_key(fileName)
+            try:
+                key.save_public_key(fileName)
+            except Exception as e:
+                spawnDialogWindow('Error Happened', str(e), type='Warning')
 
     def egSavePrivateKey(self):
         if not (self.egPriXInp.text() and self.egPriPInp.text()):
-            print('Private key form not all filled')
+            spawnDialogWindow('Failed to Save Private Key', 'Private key form not all filled', type='Warning')
             return
         x = int(self.egPriXInp.text())
         p = int(self.egPriPInp.text())
         key = ElGamalKey(None, ElGamalPrivateKey(x, p))
         fileName, _ = QFileDialog.getSaveFileName(None, 'Save Private Key', 'key.pri', 'PrivateKey Files (*.pri)')
         if fileName:
-            key.save_private_key(fileName)
+            try:
+                key.save_private_key(fileName)
+            except Exception as e:
+                spawnDialogWindow('Error Happened', str(e), type='Warning')
 
     def egSelectPlaintextFile(self):
         fileName, _ = QFileDialog.getOpenFileName(None, 'Select Plaintext File', '', 'All Files (*.*)')
@@ -93,7 +99,11 @@ class ElGamalUI:
         else:
             pt = bytes(self.egEncPtInp.toPlainText(), 'latin-1')
         # encrypt
-        self.ct = ElGamal.encrypt(pt, self.egKey.public)
+        try:
+            self.ct = ElGamal.encrypt(pt, self.egKey.public)
+        except Exception as e:
+            spawnDialogWindow('Error Happened', str(e), type='Warning')
+            return
         # output
         lsA, lsB = self.ct
         if self.egEncFileInpPathInp.text():
@@ -125,7 +135,11 @@ class ElGamalUI:
             lsA = list(map(int, self.egDecCtAInp.toPlainText().split(',')))
             lsB = list(map(int, self.egDecCtBInp.toPlainText().split(',')))
         # decrypt
-        self.pt = ElGamal.decrypt((lsA, lsB), self.egKey.private)
+        try:
+            self.pt = ElGamal.decrypt((lsA, lsB), self.egKey.private)
+        except Exception as e:
+            spawnDialogWindow('Error Happened', str(e), type='Warning')
+            return
         # output
         if self.egDecFileInpPathInp.text():
             fileName, _ = QFileDialog.getSaveFileName(None, 'Save Plaintext', 'plaintext.txt', 'Txt Files (*.txt)')
