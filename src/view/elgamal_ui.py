@@ -23,11 +23,9 @@ class ElGamalUI:
         # encryption
         self.egEncFileInpPathBtn.clicked.connect(self.egSelectPlaintextFile)
         self.egEncryptBtn.clicked.connect(self.egEncrypt)
-        self.egSaveCtBtn.clicked.connect(self.egSaveCiphertext)
         # decryption
         self.egDecFileInpPathBtn.clicked.connect(self.egSelectCiphertextFile)
         self.egDecryptBtn.clicked.connect(self.egDecrypt)
-        self.egSavePtBtn.clicked.connect(self.egSavePlaintext)
 
     # handler methods
     def egGenerateKey(self):
@@ -96,20 +94,17 @@ class ElGamalUI:
             pt = bytes(self.egEncPtInp.toPlainText(), 'latin-1')
         # encrypt
         self.ct = ElGamal.encrypt(pt, self.egKey.public)
+        # output
         lsA, lsB = self.ct
-        self.egEncCtAOut.setPlainText(','.join(list(map(str, lsA))))
-        self.egEncCtBOut.setPlainText(','.join(list(map(str, lsB))))
-
-    def egSaveCiphertext(self):
-        if self.ct is None:
-            print('Ciphertext is empty!')
-            return
-        fileName, _ = QFileDialog.getSaveFileName(None, 'Save Ciphertext', 'ciphertext.txt', 'Txt Files (*.txt)')
-        if fileName:
-            lsA, lsB = self.ct
-            with open(fileName, 'w') as f:
-                f.write('a=' + ','.join(list(map(str, lsA))) + '\n')
-                f.write('b=' + ','.join(list(map(str, lsB))) + '\n')
+        if self.egEncFileInpPathInp.text():
+            fileName, _ = QFileDialog.getSaveFileName(None, 'Save Ciphertext', 'ciphertext.txt', 'Txt Files (*.txt)')
+            if fileName:
+                with open(fileName, 'w') as f:
+                    f.write('a=' + ','.join(list(map(str, lsA))) + '\n')
+                    f.write('b=' + ','.join(list(map(str, lsB))) + '\n')
+        else:
+            self.egEncCtAOut.setPlainText(','.join(list(map(str, lsA))))
+            self.egEncCtBOut.setPlainText(','.join(list(map(str, lsB))))
 
     def egSelectCiphertextFile(self):
         fileName, _ = QFileDialog.getOpenFileName(None, 'Select Ciphertext File', '', 'All Files (*.*)')
@@ -131,16 +126,14 @@ class ElGamalUI:
             lsB = list(map(int, self.egDecCtBInp.toPlainText().split(',')))
         # decrypt
         self.pt = ElGamal.decrypt((lsA, lsB), self.egKey.private)
-        self.egDecPtOut.setPlainText(self.pt.decode('latin-1'))
-
-    def egSavePlaintext(self):
-        if self.pt is None:
-            print('Plaintext is empty!')
-            return
-        fileName, _ = QFileDialog.getSaveFileName(None, 'Save Plaintext', 'plaintext.txt', 'Txt Files (*.txt)')
-        if fileName:
-            with open(fileName, 'wb') as f:
-                f.write(self.pt)
+        # output
+        if self.egDecFileInpPathInp.text():
+            fileName, _ = QFileDialog.getSaveFileName(None, 'Save Plaintext', 'plaintext.txt', 'Txt Files (*.txt)')
+            if fileName:
+                with open(fileName, 'wb') as f:
+                    f.write(self.pt)
+        else:
+            self.egDecPtOut.setPlainText(self.pt.decode('latin-1'))
 
     # helper methods
     def egUpdatePubKeyUI(self):
