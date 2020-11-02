@@ -15,12 +15,17 @@ class RSA:
             a, b = b % a, a
         return b
 
-    def mod_inverse(self, a, m): 
-        a = a % m
-        for x in range(1, m) : 
-            if ((a * x) % m == 1) : 
-                return x 
-        return 1
+    def extended_gcd(self, a, b):
+        if a == 0:  # base
+            return (b, 0, 1)
+        g, y, x = self.extended_gcd(b % a, a)  # recc
+        return (g, x - (b // a) * y, y)
+
+    def mod_inverse(self, a, m):
+        g, x, _ = self.extended_gcd(a, m)
+        if g != 1:  # not exists
+            raise Exception('Modular inverse not exists!')
+        return x % m
 
     def generate_key(self):
         self.p = randprime(2**(self.key_size - 1), 2**self.key_size)
@@ -32,7 +37,8 @@ class RSA:
             self.e = random.randrange(2 ** (self.key_size - 1), 2 ** self.key_size)
             if (self.gcd(self.e, self.toitent_euler) == 1):
                 break
-        self.d = pow(self.e, -1, self.toitent_euler)
+        # self.d = pow(self.e, -1, self.toitent_euler)
+        self.d = self.mod_inverse(self.e, self.toitent_euler)
         print(self.p)
         print(self.q)
         print("e : ", self.e)
@@ -65,7 +71,7 @@ class RSA:
         self.d = int(pri[0])
         self.n = int(pri[1])
         # print("d : ", self.d, "n :", self.n, type(self.d), type(self.n))
-    
+
     def encrypt(self, plaintext, e, n):
         # TODO : load ke block
         pt = plaintext_to_block(plaintext, len(str(n)) - 1)
@@ -74,7 +80,7 @@ class RSA:
             res.append(str(pow(block, e, n)))
         print("Hasil dari enkripsi :", res)
         return res
-    
+
     def decrypt(self, ciphertext_block, d, n):
         # TODO : load ke block
         res = []
@@ -95,4 +101,3 @@ if __name__ == "__main__":
     rsa.decrypt(ct, rsa.d,rsa.n)
     # temp = rsa.encrypt(999)
     # rsa.decrypt(temp)
-
