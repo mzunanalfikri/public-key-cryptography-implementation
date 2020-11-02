@@ -163,7 +163,7 @@ class ElGamalUI:
             return
         # output
         if self.egDecFileInpPathInp.text():
-            fileName, _ = QFileDialog.getSaveFileName(None, 'Save Plaintext', 'plaintext.txt', 'Txt Files (*.txt)')
+            fileName, _ = QFileDialog.getSaveFileName(None, 'Save Plaintext', 'plaintext.txt', 'All Files (*.*)')
             if fileName:
                 with open(fileName, 'wb') as f:
                     f.write(pt)

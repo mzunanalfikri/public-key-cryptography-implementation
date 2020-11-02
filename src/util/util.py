@@ -16,7 +16,7 @@ def block_to_plaintext(arr_block, block_length):
     arr = "".join(arr)
     arr = [(int(arr[i:i+3]) % 256) for i in range(0, len(arr), 3)]
     print("array int : ",arr)
-    return bytes(arr).decode('latin-1').rstrip('\x00').encode('latin-1')
+    return bytes(arr).rstrip(b'\x00')
 
 if __name__ == "__main__":
     f = open("test.txt", "rb")
