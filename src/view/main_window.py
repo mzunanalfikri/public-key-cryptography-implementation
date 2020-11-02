@@ -26,7 +26,7 @@ class MainWindow(QMainWindow, RSAUI, ElGamalUI, DiffieHellmanUI):
         RSAUI.__init__(self)
         ElGamalUI.__init__(self)
         DiffieHellmanUI.__init__(self)
-        
+
         # load ui
         loadUi(os.path.join(os.getcwd(), "view", "main_window.ui"), self)
         # change page helper
@@ -35,11 +35,6 @@ class MainWindow(QMainWindow, RSAUI, ElGamalUI, DiffieHellmanUI):
         self.setupUI()
 
     def setupUI(self):
-        # # define event connection here, for example:
-        # self.imageButton.clicked.connect(self.imageButtonClickedHandler)
-        # self.audioButton.clicked.connect(self.audioButtonClickedHandler)
-        # self.videoButton.clicked.connect(self.videoButtonClickedHandler)
-
         # main menu page
         self.rsaPageBtn.clicked.connect(lambda: self.changePage(PageIdx.RSA_PAGE))
         self.elgamalPageBtn.clicked.connect(lambda: self.changePage(PageIdx.ELGAMAL_PAGE))
@@ -47,8 +42,10 @@ class MainWindow(QMainWindow, RSAUI, ElGamalUI, DiffieHellmanUI):
         self.exitBtn.clicked.connect(lambda: self.close())
         # rsa page
         self.setupUIRSA()
+        self.rsaBackBtn.clicked.connect(lambda: self.changePage(PageIdx.MAIN_MENU))
         # elgamal page
         self.setupUIElGamal()
+        self.egBackBtn.clicked.connect(lambda: self.changePage(PageIdx.MAIN_MENU))
         # diffie hellman page
         self.setupUIDiffieHellman()
-        self.egBackBtn.clicked.connect(lambda: self.changePage(PageIdx.MAIN_MENU))
+        self.dhBackBtn.clicked.connect(lambda: self.changePage(PageIdx.MAIN_MENU))

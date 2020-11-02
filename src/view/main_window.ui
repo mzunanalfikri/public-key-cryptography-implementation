@@ -525,6 +525,19 @@
        </rect>
       </property>
      </widget>
+     <widget class="QPushButton" name="rsaBackBtn">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>20</y>
+        <width>71</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;&lt; Back</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="elgamalPage">
      <widget class="QLabel" name="egTitle">
@@ -1095,11 +1108,76 @@
      </widget>
     </widget>
     <widget class="QWidget" name="dhPage">
+     <widget class="QGroupBox" name="dhInputGroup">
+      <property name="geometry">
+       <rect>
+        <x>300</x>
+        <y>130</y>
+        <width>511</width>
+        <height>171</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Input</string>
+      </property>
+      <widget class="QWidget" name="formLayoutWidget_3">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>30</y>
+         <width>471</width>
+         <height>121</height>
+        </rect>
+       </property>
+       <layout class="QFormLayout" name="dhInputFL">
+        <item row="1" column="0">
+         <widget class="QLabel" name="dhInpGLbl">
+          <property name="text">
+           <string>g</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="dhInpXLbl">
+          <property name="text">
+           <string>x</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="0">
+         <widget class="QLabel" name="dhInpYLbl">
+          <property name="text">
+           <string>y</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QLabel" name="dhInpNLbl">
+          <property name="text">
+           <string>n</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QLineEdit" name="dhInpNInp"/>
+        </item>
+        <item row="1" column="1">
+         <widget class="QLineEdit" name="dhInpGInp"/>
+        </item>
+        <item row="2" column="1">
+         <widget class="QLineEdit" name="dhInpXInp"/>
+        </item>
+        <item row="3" column="1">
+         <widget class="QLineEdit" name="dhInpYInp"/>
+        </item>
+       </layout>
+      </widget>
+     </widget>
      <widget class="QLabel" name="dhTitle">
       <property name="geometry">
        <rect>
         <x>350</x>
-        <y>40</y>
+        <y>20</y>
         <width>411</width>
         <height>41</height>
        </rect>
@@ -1120,36 +1198,85 @@
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QTextBrowser" name="simulation_result">
+     <widget class="QGroupBox" name="dhOutputGroup">
       <property name="geometry">
        <rect>
-        <x>240</x>
-        <y>380</y>
-        <width>591</width>
-        <height>192</height>
+        <x>300</x>
+        <y>340</y>
+        <width>511</width>
+        <height>301</height>
        </rect>
       </property>
+      <property name="title">
+       <string>Output</string>
+      </property>
+      <widget class="QPlainTextEdit" name="dhResultOut">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>90</y>
+         <width>471</width>
+         <height>191</height>
+        </rect>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QWidget" name="formLayoutWidget_4">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>20</y>
+         <width>158</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <layout class="QFormLayout" name="dhShowStepsFL">
+        <item row="0" column="0">
+         <widget class="QLabel" name="dhShowStepsLbl">
+          <property name="text">
+           <string>Show Steps</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QCheckBox" name="dhShowStepsCbox">
+          <property name="text">
+           <string/>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QPushButton" name="dhGetSharedKeyBtn">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>50</y>
+         <width>471</width>
+         <height>28</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Get Shared Key</string>
+       </property>
+      </widget>
      </widget>
-     <widget class="QLabel" name="egEncPtLbl_2">
+     <widget class="QPushButton" name="dhBackBtn">
       <property name="geometry">
        <rect>
-        <x>240</x>
-        <y>350</y>
-        <width>111</width>
-        <height>20</height>
+        <x>40</x>
+        <y>20</y>
+        <width>71</width>
+        <height>41</height>
        </rect>
-      </property>
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
       </property>
       <property name="text">
-       <string>Hasil simulasi :</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
+       <string>&lt;&lt; Back</string>
       </property>
      </widget>
     </widget>
