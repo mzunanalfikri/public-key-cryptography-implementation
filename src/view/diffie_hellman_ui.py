@@ -1,4 +1,5 @@
 from controller import DiffieHellman
+from .helper_ui import spawnDialogWindow
 
 
 class DiffieHellmanUI:
