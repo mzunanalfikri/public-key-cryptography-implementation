@@ -14,7 +14,7 @@ def plaintext_to_block(byte_pt, block_length):
 def block_to_plaintext(arr_block, block_length):
     arr = [str(i).rjust(block_length, "0") for i in arr_block]
     arr = "".join(arr)
-    arr = [int(arr[i:i+3]) for i in range(0, len(arr), 3)]
+    arr = [(int(arr[i:i+3]) % 256) for i in range(0, len(arr), 3)]
     print("array int : ",arr)
     return bytes(arr)
 
