@@ -27,8 +27,8 @@
      <widget class="QLabel" name="mainTitle">
       <property name="geometry">
        <rect>
-        <x>230</x>
-        <y>100</y>
+        <x>340</x>
+        <y>160</y>
         <width>411</width>
         <height>41</height>
        </rect>
@@ -52,8 +52,8 @@
      <widget class="QGroupBox" name="mainMenuGroup">
       <property name="geometry">
        <rect>
-        <x>320</x>
-        <y>180</y>
+        <x>430</x>
+        <y>240</y>
         <width>231</width>
         <height>311</height>
        </rect>
@@ -811,7 +811,7 @@
         <rect>
          <x>20</x>
          <y>360</y>
-         <width>211</width>
+         <width>441</width>
          <height>28</height>
         </rect>
        </property>
@@ -860,19 +860,6 @@
          </widget>
         </item>
        </layout>
-      </widget>
-      <widget class="QPushButton" name="egSaveCtBtn">
-       <property name="geometry">
-        <rect>
-         <x>250</x>
-         <y>360</y>
-         <width>211</width>
-         <height>28</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Save Ciphertext</string>
-       </property>
       </widget>
       <widget class="QPlainTextEdit" name="egEncCtBOut">
        <property name="geometry">
@@ -994,7 +981,7 @@
         <rect>
          <x>20</x>
          <y>360</y>
-         <width>211</width>
+         <width>441</width>
          <height>28</height>
         </rect>
        </property>
@@ -1043,19 +1030,6 @@
          </widget>
         </item>
        </layout>
-      </widget>
-      <widget class="QPushButton" name="egSavePtBtn">
-       <property name="geometry">
-        <rect>
-         <x>250</x>
-         <y>360</y>
-         <width>211</width>
-         <height>28</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Save Plaintext</string>
-       </property>
       </widget>
       <widget class="QPlainTextEdit" name="egDecCtBInp">
        <property name="geometry">
