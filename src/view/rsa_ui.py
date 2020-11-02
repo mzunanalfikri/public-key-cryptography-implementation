@@ -3,6 +3,7 @@ import sys
 from PyQt5.uic import loadUi
 from PyQt5.QtWidgets import QApplication, QMainWindow, QFileDialog, QGraphicsPixmapItem, QGraphicsScene, QErrorMessage, QMessageBox
 from PyQt5.QtGui import QPixmap
+import time
 
 from controller import RSA
 
@@ -46,6 +47,14 @@ class RSAUI:
         msg.setText(str(title))
         msg.setInformativeText(temp)
         msg.exec_()
+    
+    def info_msg(self,title, msg):
+        temp = msg
+        msg = QMessageBox()
+        # msg.setIcon(QMessageBox.Warning)
+        msg.setText(str(title))
+        msg.setInformativeText(temp)
+        msg.exec_()
 
     def load_pt(self):
         fname = QFileDialog().getOpenFileName(None, "Load Plaintext", "", "Allfiles (*.txt)")
@@ -78,6 +87,7 @@ class RSAUI:
         self.d_file_name.setText(self.ct_path)
 
     def encrypt(self):
+        s = time.time()
         if (self.n_key.text() == "" or self.e_key.text() == "" ):
             self.warning_msg("Wrong Key!", "Key must be filled!")
             return
@@ -100,8 +110,15 @@ class RSAUI:
             f.close()
             self.pt_path = ""
             self.refresh()
-
+        e = time.time()
+        t = str(round(e-s, 10))
+        pt_size = str(len(pt))
+        ct_size = str(len(''.join(ct)))
+        msg = "Time : " + t + " seconds\n" + "Plaintext : " + pt_size + " bytes\n" + "Ciphertext : " + ct_size + " bytes\n"
+        self.info_msg("Encrypt Success!", msg)
+        
     def decrypt(self):
+        s = time.time()
         if (self.n_key.text() == "" or self.d_key.text() == "" ):
             self.warning_msg("Wrong Key!", "Key must be filled!")
             return
@@ -111,20 +128,26 @@ class RSAUI:
 
         # try:
         if (self.d_ciphertext.toPlainText() != ''):
-            load = self.d_ciphertext.toPlainText().split(" ")
-            ct = [int(i) for i in load]
+            load = self.d_ciphertext.toPlainText()
+            ct = [int(i) for i in load.split(" ")]
             print("hasil ct" , ct)
             pt = self.rsa.decrypt(ct, int(self.d_key.text()), int(self.n_key.text()))
             print("hasil pt = ", pt)
             self.d_plaintext.setPlainText(pt.decode('utf-8', 'ignore'))
         else:
             f = open(self.ct_path, "r")
-            temp = f.read().split(" ")
+            load = f.read().split(" ")
             f.close()
-            ct = [int(i) for i in temp]
+            ct = [int(i) for i in load]
             pt = self.rsa.decrypt(ct, int(self.d_key.text()), int(self.n_key.text()))
             fname = QFileDialog.getSaveFileName(self, 'Save File')
             f = open(fname[0] + ".txt", "wb")
             f.write(pt)
         # except:
         #     self.warning_msg("Decrypt Failed!", "n and d key must match.")
+        e = time.time()
+        t = str(round(e-s, 10))
+        ct_size = str(len(load))
+        pt_size = str(len(pt.decode('latin-1').rstrip('\x00')))
+        msg = "Time : " + t + " seconds\n" + "Ciphertext : " + ct_size + " bytes\n" + "Plaintext : " + pt_size + " bytes\n"
+        self.info_msg("Decrypt Success!", msg)
