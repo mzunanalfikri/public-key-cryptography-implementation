@@ -94,7 +94,8 @@ class RSAUI:
         print(self.e_plaintext.toPlainText())
         if (not((self.e_plaintext.toPlainText() == "") ^ (self.pt_path == ''))):
             self.warning_msg("Wrong Plaintext!", "Plaintext mus be loaded from file or writen in textbox")
-
+            return
+            
         if (self.e_plaintext.toPlainText() != ''):
             pt = bytes(self.e_plaintext.toPlainText(), 'utf-8')
             ct = self.rsa.encrypt(pt, int(self.e_key.text()), int(self.n_key.text()))
@@ -126,6 +127,7 @@ class RSAUI:
 
         if (not((self.d_ciphertext.toPlainText() == "") ^ (self.ct_path == ''))):
             self.warning_msg("Wrong Ciphertext!", "Ciphertext mus be loaded from file or writen in textbox")
+            return
 
         # try:
         if (self.d_ciphertext.toPlainText() != ''):
