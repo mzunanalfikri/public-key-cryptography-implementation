@@ -1,4 +1,5 @@
 import os
+import time
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
@@ -98,7 +99,9 @@ class ElGamalUI:
             pt = bytes(self.egEncPtInp.toPlainText(), 'latin-1')
         # encrypt
         try:
+            st = time.time()
             ct = ElGamal.encrypt(pt, public_key)
+            ed = time.time()
         except Exception as e:
             spawnDialogWindow('Error Happened', str(e), type='Warning')
             return
@@ -115,6 +118,11 @@ class ElGamalUI:
         else:
             self.egEncCtAOut.setPlainText(','.join(list(map(str, lsA))))
             self.egEncCtBOut.setPlainText(','.join(list(map(str, lsB))))
+        # summary (time and size, ciphertext size excluding 'a=' and 'b=')
+        len_pt = len(pt)
+        len_ct = len(','.join(list(map(str, lsA)))) + len(','.join(list(map(str, lsB))))
+        msg = 'Time: ' + str(ed - st) + ' sekon\nPlaintext: ' + str(len_pt) + ' bytes\nCiphertext: ' + str(len_ct) + ' bytes'
+        spawnDialogWindow('Encryption Succeed', msg, type='Information')
 
     def egSelectCiphertextFile(self):
         fileName, _ = QFileDialog.getOpenFileName(None, 'Select Ciphertext File', '', 'All Files (*.*)')
@@ -147,7 +155,9 @@ class ElGamalUI:
             lsB = list(map(int, self.egDecCtBInp.toPlainText().split(',')))
         # decrypt
         try:
+            st = time.time()
             pt = ElGamal.decrypt((lsA, lsB), private_key)
+            ed = time.time()
         except Exception as e:
             spawnDialogWindow('Error Happened', str(e), type='Warning')
             return
@@ -160,6 +170,11 @@ class ElGamalUI:
                 self.egDecPtOut.clear()
         else:
             self.egDecPtOut.setPlainText(pt.decode('latin-1'))
+        # summary (time and size, ciphertext size excluding 'a=' and 'b=')
+        len_ct = len(','.join(list(map(str, lsA)))) + len(','.join(list(map(str, lsB))))
+        len_pt = len(pt)
+        msg = 'Time: ' + str(ed - st) + ' sekon\nCiphertext: ' + str(len_ct) + ' bytes\nPlaintext: ' + str(len_pt) + ' bytes'
+        spawnDialogWindow('Decryption Succeed', msg, type='Information')
 
     # helper methods
     def egUpdatePubKeyUI(self, public_key):
