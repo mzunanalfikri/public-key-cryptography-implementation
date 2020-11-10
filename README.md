@@ -1,7 +1,7 @@
-# IF4020 Kriptografi
-# Tucil 3 Implementasi Algoritma RSA, Elgamal, dan Diffie-Hellman
+# Public Key Cryptography
+Implementation RSA , Elgamal, and Diffie-Hellman.
 
-# Identitas
+# Identity
 Muhammad Zunan Alfikri (13518019)\
 Naufal Dean Anugrah (13518123)
 
